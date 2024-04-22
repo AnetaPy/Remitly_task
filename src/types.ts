@@ -1,3 +1,11 @@
+export interface RolePolicy {
+    "PolicyName": string,
+    "PolicyDocument": {
+        "Version": string,
+        "Statement": OneStatement[],
+    }
+}
+
 export interface OneStatement {
     Sid: string,
     Effect: string,
