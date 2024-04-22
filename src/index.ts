@@ -25,7 +25,7 @@ for (const statement of allStatements) {
 }
 
 // Save JSON file with outputs
-fs.writeFile("allUsers.json", JSON.stringify(allUsers), (err) => {
+fs.writeFile("src/allUsers.json", JSON.stringify(allUsers), (err) => {
     if (err)
         console.log(err);
     else {

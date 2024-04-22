@@ -19,7 +19,7 @@
         "Sid": "Player2",
         "Effect": "Deny",
         "Action": "s4:*",
-        "Resource": "*"
+        "Resource": "**"
       },
       {
         "Sid": "Player3",
@@ -34,7 +34,7 @@
         "Sid": "Player4",
         "Effect": "Allow",
         "Action": "s4:*",
-        "Resource": "1"
+        "Resource": "*"
       },
       {
         "Sid": "Player5",
