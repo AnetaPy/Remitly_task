@@ -1,23 +1,34 @@
 import * as data from "./data.json";
+import * as fs from "fs";
+import {OneStatement, OneUser, RolePolicy} from "./types";
 
-import {OneStatement, OneUser} from "./types";
-
-const allStatements: OneStatement[] = data.PolicyDocument.Statement;
-const allUsersArray: OneUser[] = [];
+const rolePolicyData: RolePolicy = data;
+const allStatements: OneStatement[] = rolePolicyData.PolicyDocument.Statement;
+const allUsers = {
+    allUsersArray: [] as OneUser[]
+};
 
 for (const statement of allStatements) {
     const {Sid, Resource} = statement;
 
     if (Array.isArray(Resource)) {
-        allUsersArray.push({
+        allUsers.allUsersArray.push({
             name: Sid,
             output: true,
         });
     } else {
-        allUsersArray.push({
+        allUsers.allUsersArray.push({
             name: Sid,
             output: Resource.split("*").length - 1 !== 1,
         });
     }
 }
-console.log(allUsersArray);
+
+// Save JSON file with outputs
+fs.writeFile("allUsers.json", JSON.stringify(allUsers), (err) => {
+    if (err)
+        console.log(err);
+    else {
+        console.log("File written successfully\n");
+    }
+});
