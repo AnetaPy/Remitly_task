@@ -1,0 +1,50 @@
+{
+  "PolicyName": "root",
+  "PolicyDocument": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "Player1",
+        "Effect": "Allow",
+        "Action": [
+          "s3:ListAllMyBuckets",
+          "s3:GetBucketLocation"
+        ],
+        "Resource": [
+          "arn:aws:s3:::BUCKET-NAME/home/${aws:username}",
+          "arn:aws:s3:::BUCKET-NAME/home/${aws:username}/**"
+        ]
+      },
+      {
+        "Sid": "Player2",
+        "Effect": "Deny",
+        "Action": "s4:*",
+        "Resource": "*"
+      },
+      {
+        "Sid": "Player3",
+        "Effect": "Deny",
+        "Action": [
+          "s3:ListAllMyBuckets",
+          "s3:GetBucketLocation"
+        ],
+        "Resource": "**"
+      },
+      {
+        "Sid": "Player4",
+        "Effect": "Allow",
+        "Action": "s4:*",
+        "Resource": "1"
+      },
+      {
+        "Sid": "Player5",
+        "Effect": "Deny",
+        "Action": "s4:*",
+        "Resource": [
+          "arn:aws:s3:::BUCKET-NAME/home/${aws:username}",
+          "arn:aws:s3:::BUCKET-NAME/home/${aws:username}/*"
+        ]
+      }
+    ]
+  }
+}
