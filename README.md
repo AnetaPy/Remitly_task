@@ -29,4 +29,4 @@ npm install
 npx ts-node src/index.ts
 ```
 
-4. Check the allUsers.json file located in the main folder.
+4. Check the allUsers.json file located in the src directory.
